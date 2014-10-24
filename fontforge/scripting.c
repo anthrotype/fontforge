@@ -1747,7 +1747,8 @@ char **GetFontNames(char *filename) {
 	    } else if (( ch1=='%' && ch2=='!' ) ||
 			( ch1==0x80 && ch2=='\01' ) ) {	/* PFB header */
 		ret = NamesReadPostScript(filename);
-	    } else if ( ch1=='%' && ch2=='P' && ch3=='D' && ch4=='F' ) {
+	    } else if ( ch1=='%' && ch2=='P' && ch3=='D' && ch4=='F' && 0 ) {
+	        // We are disabling scanning for P. D. F. until we can address the performance issues.
 		ret = NamesReadPDF(filename);
 	    } else if ( ch1=='<' && ch2=='?' && (ch3=='x'||ch3=='X') && (ch4=='m'||ch4=='M') ) {
 		ret = NamesReadSVG(filename);
