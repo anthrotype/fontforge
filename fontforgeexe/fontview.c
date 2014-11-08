@@ -947,9 +947,9 @@ static void _MenuExit(void *UNUSED(junk)) {
     {
 	AskAndMaybeCloseLocalCollabServers();
     }
-
+#ifndef _NO_PYTHON
     python_call_onClosingFunctions();
-
+#endif
 
     LastFonts_Save();
     for ( fv = fv_list; fv!=NULL; fv = next )
@@ -8142,6 +8142,7 @@ int FontViewFind_byXUIDConnected( FontViewBase* fv, void* udata )
     if( !fv || !fv->sf )
 	return 0;
     return ( fv->collabState == cs_server || fv->collabState == cs_client )
+	&& fv->sf->xuid
 	&& !strcmp( fv->sf->xuid, (char*)udata );
 }
 

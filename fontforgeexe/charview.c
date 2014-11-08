@@ -5948,7 +5948,7 @@ return;
 		    cv->dv->ii.vheight/cv->dv->ii.fh);
 	}
 
-	{
+	if (cv->charselector != NULL && cv->charselectorPrev != NULL && cv->charselectorNext != NULL) {
 	  GRect charselector_size;
 	  GRect charselectorNext_size;
 	  GRect charselectorPrev_size;
@@ -10113,7 +10113,8 @@ void _CVMenuNamePoint(CharView *cv, SplinePoint *sp) {
             sp->name = name;
             CVCharChangedUpdate(&cv->b);
         }
-        free(ret);
+        if (name != ret) { free(ret); ret = NULL; }
+        if (name != oldname) { free(oldname); oldname = NULL; }
     }
 }
 
