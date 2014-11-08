@@ -1615,8 +1615,8 @@ static void dumpgposAnchorData(FILE *gpos,AnchorClass *_ac,
 		for ( k=0, ac=_ac; k<classcnt; ac=ac->next ) if ( ac->matches ) {
 		    if ( ap->anchor==ac ) {
 			if ( ap->lig_index>pos ) pos = ap->lig_index;
-			if (k*max+ap->lig_index > special_ceiling) {
-				fprintf(stderr, "Something is wrong.\n");
+			if (k*max+ap->lig_index > special_ceiling || k*max+ap->lig_index < 0) {
+				fprintf(stderr, "A ligature index is invalid.\n");
 			} else {
 				aps[k*max+ap->lig_index] = ap;
 			}
