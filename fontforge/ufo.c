@@ -1633,7 +1633,6 @@ int ufo_kerning_tree_attempt_insert(struct ufo_kerning_tree_session *session, co
 
 
 static int UFOOutputKerning2(const char *basedir, SplineFont *sf, int isv) {
-    SplineChar *sc;
     int i, j;
     int has_content = 0;
 
@@ -1732,7 +1731,7 @@ static int UFOOutputKerning2(const char *basedir, SplineFont *sf, int isv) {
             !(left_grouptype & GROUP_NAME_RIGHT) &&
             ((left_grouptype & GROUP_NAME_VERTICAL) == (isv * GROUP_NAME_VERTICAL)) &&
             left_class_name_record != NULL &&
-            sc != NULL) {
+            ssc != NULL) {
             offset = current_groupkern->offset;
             valid = 1;
           }
